@@ -3,8 +3,8 @@ import requests
 
 
 def main():
-    test1()
-    #test()
+    #test1()
+    test()
 
 
 def test1():
@@ -41,14 +41,8 @@ def test():
     y2 = requests.get(url + 'avg-genre-ratings/all-users')
     listOfRequests.append(y2)
     time.sleep(0.01)
-    y3= requests.get(url + 'profile/78')
-    listOfRequests.append(y2)
-    time.sleep(0.01)
-    y4 = requests.get(url + 'avg-genre-ratings/all-users')
-    listOfRequests.append(y2)
-    time.sleep(0.01)
-    y5 = requests.get(url + 'profile/all')
-    listOfRequests.append(y5)
+    y6 = requests.get(url + 'profile/78')
+    listOfRequests.append(y6)
     time.sleep(0.01)
     for i in listOfRequests:
         print("request url: " + str(i.url))
