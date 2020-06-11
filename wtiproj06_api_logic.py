@@ -1,5 +1,7 @@
+import wtiproj03_ETL
 import wtiproj06_cassandra_client as cc
 from wtiproj03_ETL import lab4JoinTables, averageRatingOfUser
+import pandas as panda
 
 KEYSPACE = "ratings_keyspace"
 USER_TABLE = "user_rated_movies"
@@ -44,8 +46,18 @@ class ApiLogic:
         self.cass.push_data_user_rated_table(data['userID'], data['movieID'], data['rating'], data['genre'])
         return "dodano"
 
+    def averageRating(self):
+        ratings = self.cass.get_data_table(KEYSPACE, USER_TABLE)
+        dfRatings = panda.DataFrame.from_dict(ratings)
+        fill, avgRating = wtiproj03_ETL.averageRating(dfRatings)
+        return avgRating
+
     def getProfile(self, id):
         data = self.cass.get_data_table_byId(KEYSPACE, AVG_RATINGS, id)
+        return data
+
+    def getRating(self, id):
+        data = self.cass.get_data_table_byId(KEYSPACE, USER_TABLE, id)
         return data
 
     def clearAll(self):

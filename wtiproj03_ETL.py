@@ -4,10 +4,10 @@ import numpy as np
 
 def lab4JoinTables():
     df = panda.read_csv('/home/vagrant/PycharmProjects/wtiproj03/user_ratedmovies.dat', sep=" ",
-                        nrows=500, delimiter="\t",
+                        nrows=2000, delimiter="\t",
                         usecols=["userID", "movieID", "rating"])
     df1 = panda.read_csv('/home/vagrant/PycharmProjects/wtiproj03/movie_genres.dat', sep=" ",
-                         nrows=500, delimiter="\t",
+                         nrows=2000, delimiter="\t",
                          usecols=["movieID", "genre"])
 
     merged_table = panda.merge(df, df1, on='movieID')
